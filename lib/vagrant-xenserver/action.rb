@@ -39,6 +39,7 @@ module VagrantPlugins
               b2.use UploadVHD
               b2.use UploadXVA
               b2.use DownloadXVA
+              b2.use FindTemplate
               b2.use CreateTemplate
               b2.use CloneVM
               b2.use SetVMParams
@@ -255,6 +256,7 @@ module VagrantPlugins
       autoload :PrepareNFSSettings, action_root.join('prepare_nfs_settings')
       autoload :PrepareNFSValidIds, action_root.join('prepare_nfs_valid_ids')
       autoload :DownloadXVA, action_root.join('download_xva')
+      autoload :FindTemplate, action_root.join('find_template')
     end
   end
 end

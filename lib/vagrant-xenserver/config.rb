@@ -33,6 +33,11 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :name
 
+      # Name of an existing template
+      #
+      # @return [String]
+      attr_accessor :template_name
+
       # True if the VM should be PV
       #
       # @return [Bool]
@@ -64,6 +69,7 @@ module VagrantPlugins
         @xs_username = UNSET_VALUE
         @xs_password = UNSET_VALUE
         @name = UNSET_VALUE
+        @template_name = UNSET_VALUE
         @pv = UNSET_VALUE
         @api_timeout = UNSET_VALUE
         @memory = UNSET_VALUE
@@ -78,6 +84,7 @@ module VagrantPlugins
         @xs_username = nil if @xs_username == UNSET_VALUE
         @xs_password = nil if @xs_password == UNSET_VALUE
         @name = nil if @name == UNSET_VALUE
+        @template_name = nil if @template_name == UNSET_VALUE
         @pv = nil if @pv == UNSET_VALUE
         @api_timeout = 60 if @api_timeout == UNSET_VALUE
         @memory = 1024 if @memory == UNSET_VALUE

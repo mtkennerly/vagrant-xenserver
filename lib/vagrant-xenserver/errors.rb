@@ -51,6 +51,9 @@ module VagrantPlugins
         error_key(:connection_error)
       end
       
+      class NoTemplateFound < VagrantXenServerError
+        error_key(:no_template_found)
+      end
     end
   end
 end

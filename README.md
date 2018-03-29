@@ -21,12 +21,14 @@ use. Currently the NFS SR is the recommended storage type.
 
 ## Boxes
 
-Vagrant-xenserver supports 3 types of boxes today. These are:
+Vagrant-xenserver supports 4 types of boxes today. These are:
 
 1. XVA URL - the box simply contains a URL that points to an XVA
    (XenServer export) file.
 2. XVA - the box contains an XVA (XenServer export).
 3. VHD - the box contains a VHD file.
+4. Template - the box simply contains the name of an existing
+   template on XenServer.
 
 The recommended format is either 1 or 2, and it is suggested that
 Packer is used to create the XVA files, which is available from
@@ -84,6 +86,21 @@ echo "{\"provider\": \"xenserver\"}" > metadata.json
 * Create the box:
 ```shell
 tar cf ../ubuntu.box .
+```
+
+If you just want to reference a template that already exists on the server,
+then you can put the template name in the box:
+
+```shell
+echo "{\"provider\": \"xenserver\"}" > metadata.json
+cat > Vagrantfile <<EOF
+Vagrant.configure(2) do |config|
+  config.vm.provider :xenserver do |xs|
+    xs.template_name = "ubuntu-15.10-amd64"
+  end
+end
+EOF
+tar cf ubuntu.box metadata.json Vagrantfile
 ```
 
 Note that since v0.0.12, vagrant-xenserver will assume by default that

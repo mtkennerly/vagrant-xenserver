@@ -35,7 +35,7 @@ module VagrantPlugins
         end
 
         def call(env)
-          if env[:machine].provider_config.xva_url.nil?
+          if env[:machine].provider_config.xva_url.nil? && env[:machine].provider_config.template_name.nil?
             box_vhd_file = env[:machine].box.directory.join('box.vhd').to_s
 
             if File.exist?(box_vhd_file)
